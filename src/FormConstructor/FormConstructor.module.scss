@@ -1,0 +1,31 @@
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 970px) {
+    column-gap: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.formValue {
+  text-align: start;
+  width: 100%;
+  border-bottom: 1px solid #AAD4E8;
+  display: block;
+}
+
+.formField {
+  display: grid;
+  grid-template-columns: 126px 1fr;
+  justify-items: stretch;
+  align-items: center;
+}
+
+.fromActions {
+  display: grid;
+  column-gap: 8px;
+  grid-auto-flow: column;
+  grid-auto-columns: 100px;
+}

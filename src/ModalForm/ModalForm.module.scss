@@ -1,0 +1,30 @@
+.modal {
+  // Убираем отступы antd
+  padding: 0;
+  margin: 0;
+
+  :global {
+    .ant-modal-content {
+      // Ограничиваем высоту модального окна
+      height: auto;
+      max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ant-modal-header {
+      flex-shrink: 0;
+      text-align: center;
+
+      // Заголовок модального окна
+      .ant-modal-title {
+        font-size: var(--font-size-xl);
+      }
+    }
+
+    // Контент модального окна занимает все доступное пространство по высоте
+    .ant-modal-body {
+      flex: 1;
+    }
+  }
+}

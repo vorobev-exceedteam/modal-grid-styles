@@ -1,0 +1,53 @@
+.grid {
+  border: 1px solid var(--secondary);
+  // Переопределение размера шрифта антд
+  font-size: var(--font-size-default);
+
+  // Переопределение глобальных стилей антд важно делать в контексте CSS-модулей.
+  // То есть глобальные стили ниже лежат в контексте модульного класса .grid,
+  // соответственно они влияют только на гриды с этим классом, а не на все подряд.
+  :global {
+    .ant-table-thead {
+      & > tr > th {
+        // Красим заголовок таблицы в брендовые цвета:
+        background-color: var(--secondary-light);
+        border-bottom-color: var(--secondary);
+
+        // Для колонок, прибитых вправо, антд прописывает text-align: right прямо в инлайновых
+        // стилях, поэтому нам никак не перебить их без использования !important
+        text-align: center !important;
+      }
+
+      & > tr > :local(.indexColumn)::before {
+        // Убираем правую полоску-ограничитель у заголовка индексной колонки
+        display: none;
+      }
+    }
+
+    .ant-table-tbody {
+      & > tr > td {
+        // Корректируем дефолтные размеры ячеек на наши
+        min-height: 37px;
+        padding: 8px;
+
+        // Меняем цвет нижней границы ячейки
+        border-bottom: 1px solid var(--secondary-light);
+      }
+
+      & > tr > :local(.indexColumn) {
+        // Кастомизируем индексную колонку
+        width: 35px;
+        background-color: var(--secondary-light);
+        border-right: 1px solid var(--secondary);
+        border-bottom: 1px solid var(--secondary);
+        color: var(--text-secondary);
+        text-align: center;
+      }
+
+      & > tr.ant-table-row:hover > :local(.indexColumn) {
+        // Ячейки индексной колонки не меняют свой цвет при ховере
+        background-color: var(--secondary-light);
+      }
+    }
+  }
+}

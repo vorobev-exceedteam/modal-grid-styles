@@ -1,0 +1,51 @@
+.customButton {
+  // Кастомизация стилей antd
+  box-shadow: none;
+  padding: 5px 10px 4px;
+  border-radius: 5px;
+}
+
+// Разделение кнопки на типы обязательно, недопустима ситуация, когда на проекте
+// 100500 разных типов кнопок, и каждая кнопка настраивается только там, где она используется.
+// Во всех приличных библиотеках есть строго заданная система типов кнопок.
+.type {
+  // Я создаю свои типы кнопок, но можно использовать типы из антд и кастомизировать их здесь.
+  // Мне это не подходит, т.к. в том же инвентори у нас есть типы, которых нет в антд.
+  &__primary {
+    color: var(--text-inverted);
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+
+    // Очень хорошо, если человек вспоминает про существование hover, focus и active-состояний.
+    // Если есть хотя бы hover, то это уже тянет на троечку.
+    // Если встречается :focus-visible, то это вообще 5+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--text-inverted);
+      background-color: var(--primary-active);
+      border-color: var(--primary-active);
+    }
+  }
+
+  &__text {
+    color: var(--text-primary);
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: 1px solid var(--gray);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--text-primary);
+      background-color: var(--background-2);
+      border-color: var(--gray);
+    }
+
+    &:active {
+      color: var(--text-active);
+      border-color: var(--primary);
+    }
+  }
+}

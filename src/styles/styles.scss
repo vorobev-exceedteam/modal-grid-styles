@@ -1,0 +1,52 @@
+// Импортим так называемый CSS reset.
+// Это практика любого уважающего себя верстальщика
+@import-normalize;
+// Порядок импортов важен, так как влияет на каскад CSS.
+// Общее правило: сначала базовые абстрактные стили, затем 3rd party, затем пользовательские
+@import "config/variables";
+@import "config/fonts";
+@import "vendor";
+
+body {
+	// Сброс отступов body, делается всегда и всеми
+  margin: 0;
+	// Строку шрифтов полезно вытащить в CSS-переменные, так как один и тот же
+	// шрифт может понадобиться прописывать во многих местах (например,
+	// при переопределении библиотечных стилей, как у нас в случае аг грида)
+  font-family: var(--font);
+	// Основной цвет текста задаётся как можно выше (в html или body),
+	// но по факту его много где приходится дописывать (например, в ссылках --
+	// они не наследуют цвет текста от вышестоящих элементов)
+	color: var(--text-primary);
+	// Опциональные штуки
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+	// У нас полноэкранное приложение, поэтому это обязательно
+  height: 100%;
+}
+
+// Кастомные скроллбары, как в инвентори.
+// Стандартные скроллбары в windows настолько страшные,
+// что их почти всегда меняют на что-то более симпатичное
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--translucent-grey) transparent;
+}
+
+*::-webkit-scrollbar {
+	height: 7px;
+	width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #79798a50;
+	border-radius: 3.5px;
+}

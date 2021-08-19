@@ -1,0 +1,23 @@
+.contextMenuDropdown {
+  color: var(--text-primary); // переопределение антд
+}
+
+.contextMenu {
+  border-radius: 5px;
+  padding: 6px 0;
+  min-width: 150px;
+}
+
+.contextMenuItem:not(:last-of-type) {
+  // Добавляем полоску под каждый пункт меню
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 24px);
+    height: 1px;
+    background-color: var(--gray);
+  }
+}
